@@ -1,102 +1,50 @@
-package SudokuCode;
-
-import java.util.LinkedList;
-import java.util.List;
+package code;
 
 public class Cell {
-	
-	private int value, row, column;
-	private List<Cell> neighbours;
-	private List<Integer> possible;
-	private List<Integer> neighbourType; //Type 1 is same row, type 2 is same column, type 3 is same block.
-	
-	public Cell()
-	{
-		this.value = 0;
-		this.neighbours = new LinkedList<Cell>();
-		this.possible = new LinkedList<Integer>();
-		this.neighbourType = new LinkedList<Integer>();
-		this.row = 0;
-		this.column = 0;
+
+    private int number; // the solved number in the cell
+    private int boxID; // the number of the box the cell is in
+    private int potential;
+	//public boolean[] possible = new boolean[10];
+    boolean[] possible = {true, true, true, true, true, true, true, true, true, true}; //set it all as true
+        //this indicates what numbers the cell can possibly be
+
+    public void cantBe(int number)
+    {
+        possible[number] = false;
+    }
+
+    public boolean canBe(int number)
+    {
+        return possible[number];
+    }
+
+    public int getNumber() {
+        return number;
+    }
+    public void setNumber(int number) {
+        this.number = number;
+    }
+    public int getBoxID() {
+        return boxID;
+    }
+    public void setBoxID(int boxID) {
+        this.boxID = boxID;
+    }
+    public boolean[] getPossible() {
+        return possible;
+    }
+    public void setPossible(boolean[] possible) {
+    	
+        this.possible = possible;
+    }
+    
+    public int getPotential() {
+		return potential;
 	}
-	
-	public void setAddress(int row, int column) 
-	{
-		this.row = row;
-		this.column = column;
-	}
-	
-	public int getRow()
-	{
-		return this.row;
-	}
-	
-	public int getColumn()
-	{
-		return this.column;
-	}
-	
-	public void setValue(int value)
-	{
-		this.value = value;
-	}
-	
-	public int getValue()
-	{
-		return this.value;
-	}
-	
-	public void setNeighbourType(int value)
-	{
-		this.neighbourType.add(value);
-	}
-	
-	public List<Integer> getNeighbourType()
-	{
-		return this.neighbourType;
-	}
-	
-	public void setPossible(int value) //Initializes the possibilities to the numbers from one to nine
-	{			
-		if(value == 0)
-			for(int i = 1; i <= 9; i++)
-				this.possible.add(i);
-	}
-	
-	public List<Integer> getPossible() //Gets the list of possibilities
-	{			
-		return this.possible;
-	}
-	
-	public void removePossible(int value)
-	{	
-		for(int i = 0; i < this.possible.size(); i++)
-			if(this.possible.get(i) == value)
-			{
-				this.possible.remove(i);
-				return;
-			}
-				
-	}
-	
-	public void addPossible(int value)
-	{	
-		this.possible.add(value);
-	}
-	
-	public void emptyList()
-	{
-		this.possible.clear();
-	}
-	
-	public void setNeighbour(Cell cell)
-	{
-		this.neighbours.add(cell);
-	}
-	
-	public List<Cell> getNeighbour()
-	{
-		return this.neighbours;
+
+	public void setPotential(int potential) {
+		this.potential = potential;
 	}
 
 }
