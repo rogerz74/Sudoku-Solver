@@ -8,7 +8,7 @@ We were reading a newspaper left on the sidewalk the other day and decided to lo
 The user puts a select set of numbers into a 9 x 9 sudoku board. The program will then try to solve the sudoku using 5 different "strategies" or "solving methods". If the initial input by the user is faulty or if the user's input board does not contain any solutions, the program will not give an output.
 
 # How we built it
-My team used Java and the Swing GUI to create this solver.
+My team used Java and the Java Swing GUI to create this solver.
 
 # Challenges we ran into
 It was definitely challenging for us to write the code for the 5 different "solving methods" that the program could use. It took us a huge amount of time to come up with these strategies and took us even more time to implement the code.
